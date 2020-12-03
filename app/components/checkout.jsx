@@ -10,6 +10,7 @@ class Checkout extends Component {
         }
         return (
             <div className='checkout' id={id}>
+                <p>Checkout your items</p>
                 <div><button onClick={checkout}>Checkout</button></div>
             </div>
         )

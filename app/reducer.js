@@ -8,7 +8,8 @@ const INITIAL_STATE = fromJS({
     {id: 4, name:'car', price: '100000'},
     {id: 5, name:'falcon', price: '5'}
   ],
-  cart: [1,4]
+  cart: [1,4],
+  wishlist: [1]
 })
 
 export default (state = INITIAL_STATE, action) => {
@@ -19,6 +20,8 @@ export default (state = INITIAL_STATE, action) => {
       return state.set('cart', state.get('cart').splice(action.id, 1));
       // Below will remove all occurrences of the particular item
       //return state.set('cart', state.get('cart').filter((item) => { return item !== action.id }))
+    case 'ADD_PRODUCT_TO_WISHLIST':
+      return state.set('wishlist', state.get('wishlist').push(action.id));
     case 'CHECKOUT':
       return state.set('cart', state.get('cart').clear())
     default:
