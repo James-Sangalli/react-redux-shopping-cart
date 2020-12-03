@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from "react-router";
 
 class CartSummary extends Component {
   render() {
@@ -7,14 +8,17 @@ class CartSummary extends Component {
       return this.props.cart.includes(p.get('id'))
     })
     return (
-      <div id='cart'>
-        <h4>Shopping Cart</h4>
-        <div className='products'>
-          {products.map((product, idx) => {
-            return <div key={idx}>{product.get('name')}</div>
-          })}
+        <div id='cart'>
+            <h4>Shopping Cart</h4>
+            <div className='products'>
+                {products.map((product, idx) => {
+                    const number = Math.max(this.props.cart.reduce((n, val) => { return n + (val === product.get("id")) }) - 1, 1);
+                    return <div key={idx}>{ number + "x " + product.get('name') + " ($" + number * parseInt(product.get('price')) + ")" }</div>
+                })}
+            </div>
+            <br/>
+            <Link to={'/checkout'}>Checkout</Link>
         </div>
-      </div>
     )
   }
 }
