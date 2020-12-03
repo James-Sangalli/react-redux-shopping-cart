@@ -27,7 +27,6 @@ class CartSummary extends Component {
                 })}
             </div>
             <br/>
-            <Link to={'/checkout'}>Checkout</Link>
         </div>
     )
   }

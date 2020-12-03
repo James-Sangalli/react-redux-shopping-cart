@@ -27,4 +27,4 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-export default connect(mapDispatchToProps)(Checkout)
+export default connect(null, mapDispatchToProps)(Checkout)
