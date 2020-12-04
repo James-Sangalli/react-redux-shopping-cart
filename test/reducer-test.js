@@ -1,5 +1,6 @@
 import reducer from '../app/reducer'
 import {expect} from 'chai'
+import ActionTypes from "../app/ActionTypes";
 
 describe('Reducer', () => {
   describe('initial state', () => {
@@ -16,7 +17,7 @@ describe('Reducer', () => {
   describe('cart', () => {
     it('adds a product to the shopping cart', () => {
       const state = reducer(undefined, {
-        type: 'ADD_PRODUCT_TO_CART',
+        type: ActionTypes.ADD_PRODUCT_TO_CART,
         id: 3
       })
       expect(state.get('cart').size).to.equal(3)
@@ -26,7 +27,7 @@ describe('Reducer', () => {
   describe('wishlist', () => {
     it('adds a product to the wishlist', () => {
       const state = reducer(undefined, {
-        type: 'ADD_PRODUCT_TO_WISHLIST',
+        type: ActionTypes.ADD_PRODUCT_TO_WISHLIST,
         id: 2
       })
       expect(state.get('wishlist').size).to.equal(2)
@@ -37,7 +38,7 @@ describe('Reducer', () => {
   describe('checkout', () => {
     it('checks out the cart (clears it)', () => {
       const state = reducer(undefined, {
-        type: 'CHECKOUT',
+        type: ActionTypes.CHECKOUT,
         id: 2
       })
       expect(state.get('cart') === undefined)

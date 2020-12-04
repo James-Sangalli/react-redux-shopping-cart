@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router'
 import {connect} from 'react-redux'
+import ActionTypes from "../ActionTypes";
 
 class ProductDetail extends Component {
   render() {
@@ -41,19 +42,19 @@ function mapDispatchToProps(dispatch) {
   return {
     addToCart: (id) => {
       dispatch({
-        type: 'ADD_PRODUCT_TO_CART',
+        type: ActionTypes.ADD_PRODUCT_TO_CART,
         id: parseInt(id)
       })
     },
     removeFromCart: (id) => {
       dispatch({
-        type: 'REMOVE_PRODUCT_FROM_CART',
+        type: ActionTypes.REMOVE_PRODUCT_FROM_CART,
         id: parseInt(id)
       })
     },
     addToWishList: (id) => {
       dispatch({
-          type: 'ADD_PRODUCT_TO_WISHLIST',
+          type: ActionTypes.ADD_PRODUCT_TO_WISHLIST,
           id: parseInt(id)
       })
     }
