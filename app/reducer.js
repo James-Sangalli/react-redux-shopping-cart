@@ -18,9 +18,12 @@ export default (state = INITIAL_STATE, action) => {
     case ActionTypes.ADD_PRODUCT_TO_CART:
       return state.set('cart', state.get('cart').push(action.id))
     case ActionTypes.REMOVE_PRODUCT_FROM_CART:
-      return state.set('cart', state.get('cart').splice(action.id, 1));
-      // Below will remove all occurrences of the particular item
-      //return state.set('cart', state.get('cart').filter((item) => { return item !== action.id }))
+      const index = state.get('cart').indexOf(action.id);
+      if(index > -1) {
+        return state.set('cart', state.get('cart').delete(index));
+      } else {
+        return state;
+      }
     case ActionTypes.ADD_PRODUCT_TO_WISHLIST:
       return state.set('wishlist', state.get('wishlist').push(action.id));
     case ActionTypes.CHECKOUT:
